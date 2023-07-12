@@ -2,9 +2,11 @@ package study.tipsyboy.loginApiJwt.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import study.tipsyboy.loginApiJwt.dto.member.MemberInfoResponseDto;
 import study.tipsyboy.loginApiJwt.repository.MemberRepository;
 
+@Transactional(readOnly = true)
 @RequiredArgsConstructor
 @Service
 public class MemberService {
