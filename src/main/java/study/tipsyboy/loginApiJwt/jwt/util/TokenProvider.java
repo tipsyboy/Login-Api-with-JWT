@@ -1,10 +1,9 @@
 package study.tipsyboy.loginApiJwt.jwt.util;
 
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -26,6 +25,7 @@ import java.util.stream.Collectors;
  * 토큰을 복호화해서 사용자 정보를 얻는 등의 토큰의 유틸적인 부분을 담당하는 클래스
  */
 
+@Slf4j
 @Component
 public class TokenProvider {
 
@@ -40,6 +40,7 @@ public class TokenProvider {
         this.accessSecretKey = accessSecretKey;
         this.refreshSecretKey = refreshSecretKey;
     }
+
 
     public String createAccessToken(Authentication authentication) {
         return createToken(authentication, ACCESS_TOKEN_EXPIRE_TIME, accessSecretKey);
@@ -66,6 +67,29 @@ public class TokenProvider {
         return new UsernamePasswordAuthenticationToken(principal, null, authorities);
     }
 
+    public boolean validateToken(String token) {
+        try {
+            // parseClaimsJws 메서드를 호출하면 기본적인 포맷을 검증하고, jwt 를 생성할 때 사용했던 secretKey 로 서명했을 때
+            // 토큰에 포함된 signature 와 동일한 signature 가 생성되는지 확인합니다.
+            // Header.Payload 에 대해서 동일한 secretKey 로 서명했을 때 생성된 signature 는 항상 같아야 합니다.
+            // 만약 다르다면 Header.Payload의 값이 변조되었다고 판단할 수 있겠죠.
+            // https://targetcoders.com/jjwt-%EC%82%AC%EC%9A%A9-%EB%B0%A9%EB%B2%95/
+            Jwts.parserBuilder()
+                    .setSigningKey(getSigningKey(accessSecretKey))
+                    .build()
+                    .parseClaimsJws(token);
+            return true;
+        } catch (io.jsonwebtoken.security.SecurityException | MalformedJwtException e) {
+            log.info("잘못된 JWT 서명입니다."); // 여기 Exception 을 잘 모르겠다.
+        } catch (ExpiredJwtException e) {
+            log.info("만료된 토큰입니다.");
+        } catch (UnsupportedJwtException e) {
+            log.info("지원되지 않는 토큰입니다.");
+        } catch (IllegalArgumentException e) {
+            log.info("토큰이 잘못되었습니다.");
+        }
+        return false;
+    }
 
 
     private Claims parseToken(String token) {
