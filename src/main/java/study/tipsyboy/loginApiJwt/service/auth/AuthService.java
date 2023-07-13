@@ -17,6 +17,7 @@ public class AuthService {
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
 
+    @Transactional
     public Long signup(MemberSignupRequestDto requestDto) {
         if (memberRepository.existsByMemberName(requestDto.getMemberName())) {
             throw new RuntimeException("이미 등록 되어있는 아이디 입니다. memberName=" + requestDto.getMemberName());

@@ -1,5 +1,8 @@
 
 spring:
+  output:
+    ansi:
+      enabled: always
 
   h2:
     console:
