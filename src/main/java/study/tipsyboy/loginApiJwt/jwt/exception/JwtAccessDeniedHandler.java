@@ -1,4 +1,4 @@
-package study.tipsyboy.loginApiJwt.jwt;
+package study.tipsyboy.loginApiJwt.jwt.exception;
 
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;

@@ -7,8 +7,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
-import study.tipsyboy.loginApiJwt.jwt.JwtAccessDeniedHandler;
-import study.tipsyboy.loginApiJwt.jwt.JwtAuthenticationEntryPoint;
+import study.tipsyboy.loginApiJwt.jwt.exception.JwtAccessDeniedHandler;
+import study.tipsyboy.loginApiJwt.jwt.exception.JwtAuthenticationEntryPoint;
 import study.tipsyboy.loginApiJwt.jwt.config.JwtSecurityConfig;
 
 @RequiredArgsConstructor

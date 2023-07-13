@@ -1,4 +1,4 @@
-package study.tipsyboy.loginApiJwt.jwt;
+package study.tipsyboy.loginApiJwt.jwt.exception;
 
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
