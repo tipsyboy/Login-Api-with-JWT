@@ -16,7 +16,7 @@ public class MemberLoginRequestDto {
     private String memberName; // member login id
 
     @NotNull
-    @Size(min = 8, max = 50)
+    @Size(min = 5, max = 50)
     private String password;
 
     public MemberLoginRequestDto(String memberName, String password) {

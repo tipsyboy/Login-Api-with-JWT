@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 
 
+@Table(name = "MEMBERS")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
@@ -12,6 +13,7 @@ import javax.persistence.*;
 public class Member {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "member_id")
     private Long memberId;
 
     @Column(unique = true)
@@ -20,12 +22,12 @@ public class Member {
     private String password;
 
     @Enumerated(EnumType.STRING)
-    private RoleType role;
+    private RoleType roles;
 
     @Builder
-    public Member(String memberName, String password, RoleType role) {
+    public Member(String memberName, String password, RoleType roles) {
         this.memberName = memberName;
         this.password = password;
-        this.role = role;
+        this.roles = roles;
     }
 }

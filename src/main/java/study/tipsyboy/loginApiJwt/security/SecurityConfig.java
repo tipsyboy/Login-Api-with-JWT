@@ -55,7 +55,8 @@ public class SecurityConfig {
                 .and()
                 .authorizeRequests()
                 .mvcMatchers("/api/auth/**").permitAll()
-                .mvcMatchers("/**").hasAnyRole("MEMBER", "ADMIN");
+                .anyRequest().authenticated();
+//                .mvcMatchers("/**").hasAnyRole("MEMBER", "ADMIN");
 
         return httpSecurity.build();
     }

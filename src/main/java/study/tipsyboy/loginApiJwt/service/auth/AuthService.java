@@ -1,6 +1,7 @@
 package study.tipsyboy.loginApiJwt.service.auth;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -16,6 +17,7 @@ import study.tipsyboy.loginApiJwt.dto.auth.MemberSignupRequestDto;
 import study.tipsyboy.loginApiJwt.jwt.util.TokenProvider;
 import study.tipsyboy.loginApiJwt.repository.MemberRepository;
 
+@Slf4j
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 @Service
@@ -34,10 +36,11 @@ public class AuthService {
             throw new RuntimeException("이미 등록 되어있는 아이디 입니다. memberName=" + requestDto.getMemberName());
         }
 
+        log.info("encodedValue={}", passwordEncoder.encode("admin"));
         Member newMember = Member.builder()
                 .memberName(requestDto.getMemberName())
                 .password(passwordEncoder.encode(requestDto.getPassword()))
-                .role(RoleType.MEMBER)
+                .roles(RoleType.MEMBER)
                 .build();
 
         memberRepository.save(newMember); // 컨텍스트 안의 동일성 보장 ?
