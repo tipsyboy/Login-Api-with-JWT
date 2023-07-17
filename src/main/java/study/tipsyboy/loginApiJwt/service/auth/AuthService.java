@@ -55,12 +55,12 @@ public class AuthService {
                 = authenticationManagerBuilder.getObject().authenticate(usernamePasswordAuthenticationToken);
 
         String accessToken = tokenProvider.createAccessToken(authentication);
-//        String refreshToken = tokenProvider.createRefreshToken(authentication);
+        String refreshToken = tokenProvider.createRefreshToken(authentication);
 
         return MemberLoginResponseDto.builder()
                 .memberName(requestDto.getMemberName())
                 .accessToken(accessToken)
-                .refreshToken(null)
+                .refreshToken(refreshToken)
                 .build();
     }
 
