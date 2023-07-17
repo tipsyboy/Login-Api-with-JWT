@@ -1,14 +1,17 @@
 package study.tipsyboy.loginApiJwt.domain;
 
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Builder
 @Getter
+@Builder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class RefreshToken {
 
