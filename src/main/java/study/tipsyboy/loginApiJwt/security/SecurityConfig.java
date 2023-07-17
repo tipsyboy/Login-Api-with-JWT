@@ -3,6 +3,7 @@ package study.tipsyboy.loginApiJwt.security;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -13,6 +14,7 @@ import study.tipsyboy.loginApiJwt.jwt.config.JwtSecurityConfig;
 import study.tipsyboy.loginApiJwt.jwt.exception.JwtAccessDeniedHandler;
 import study.tipsyboy.loginApiJwt.jwt.exception.JwtAuthenticationEntryPoint;
 
+@EnableGlobalMethodSecurity(prePostEnabled = true) // @PreAuthorize 을 동작할 수 있도록 함
 @RequiredArgsConstructor
 @Configuration
 public class SecurityConfig {
