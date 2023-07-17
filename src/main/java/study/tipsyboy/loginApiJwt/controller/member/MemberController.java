@@ -25,13 +25,6 @@ public class MemberController {
     @GetMapping("/info")
     @PreAuthorize("hasAnyRole('ROLE_MEMBER', 'ROLE_ADMIN')")
     public ResponseEntity<MemberInfoResponseDto> getMyInfo(Principal principal) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        log.info("authentication info={}", authentication.getDetails());
-        log.info("authentication info={}", authentication.getCredentials());
-        log.info("authentication info={}", authentication.getAuthorities());
-        log.info("authentication info={}", authentication.getPrincipal());
-        log.info("authentication info={}", authentication.getName());
-
         return ResponseEntity.ok(memberService.findMemberInfoByMemberName(principal.getName()));
     }
 

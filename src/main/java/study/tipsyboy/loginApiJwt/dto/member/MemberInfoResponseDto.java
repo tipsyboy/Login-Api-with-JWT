@@ -13,7 +13,7 @@ public class MemberInfoResponseDto {
     private String memberName;
 
 
-    public MemberInfoResponseDto(Long memberId, String memberName) {
+    private MemberInfoResponseDto(Long memberId, String memberName) {
         this.memberId = memberId;
         this.memberName = memberName;
     }
