@@ -36,7 +36,6 @@ public class AuthService {
             throw new RuntimeException("이미 등록 되어있는 아이디 입니다. memberName=" + requestDto.getMemberName());
         }
 
-        log.info("encodedValue={}", passwordEncoder.encode("admin"));
         Member newMember = Member.builder()
                 .memberName(requestDto.getMemberName())
                 .password(passwordEncoder.encode(requestDto.getPassword()))

@@ -9,14 +9,16 @@ import study.tipsyboy.loginApiJwt.domain.Member;
 @Getter
 public class MemberInfoResponseDto {
 
+    private Long memberId;
     private String memberName;
 
 
-    public MemberInfoResponseDto(String memberName) {
+    public MemberInfoResponseDto(Long memberId, String memberName) {
+        this.memberId = memberId;
         this.memberName = memberName;
     }
 
     public static MemberInfoResponseDto from(Member entity) {
-        return new MemberInfoResponseDto(entity.getMemberName());
+        return new MemberInfoResponseDto(entity.getMemberId(), entity.getMemberName());
     }
 }

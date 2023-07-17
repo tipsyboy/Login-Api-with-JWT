@@ -24,6 +24,9 @@ public class CustomUserDetailsService implements UserDetailsService {
                 .orElseThrow(() -> new IllegalArgumentException("사용자를 찾을 수 없습니다. memberName=" + memberName));
 
         SimpleGrantedAuthority grantedAuthority = new SimpleGrantedAuthority(member.getRoles().getKey());
-        return new User(memberName, member.getPassword(), Collections.singleton(grantedAuthority));
+
+        return new User(memberName,
+                member.getPassword(),
+                Collections.singleton(grantedAuthority));
     }
 }
