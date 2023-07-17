@@ -10,12 +10,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import study.tipsyboy.loginApiJwt.domain.Member;
+import study.tipsyboy.loginApiJwt.domain.RefreshToken;
 import study.tipsyboy.loginApiJwt.domain.RoleType;
 import study.tipsyboy.loginApiJwt.dto.auth.MemberLoginRequestDto;
 import study.tipsyboy.loginApiJwt.dto.auth.MemberLoginResponseDto;
 import study.tipsyboy.loginApiJwt.dto.auth.MemberSignupRequestDto;
 import study.tipsyboy.loginApiJwt.jwt.util.TokenProvider;
 import study.tipsyboy.loginApiJwt.repository.MemberRepository;
+import study.tipsyboy.loginApiJwt.repository.RefreshTokenRepository;
 
 @Slf4j
 @Transactional(readOnly = true)
@@ -26,6 +28,7 @@ public class AuthService {
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
     private final TokenProvider tokenProvider;
+    private final RefreshTokenRepository refreshTokenRepository;
 
 //    private final AuthenticationManager authenticationManager; // 밑에 Builder 를 사용하는 것과 차이점이 뭐지..?
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
@@ -56,6 +59,12 @@ public class AuthService {
 
         String accessToken = tokenProvider.createAccessToken(authentication);
         String refreshToken = tokenProvider.createRefreshToken(authentication);
+
+        RefreshToken savedRefreshToken = RefreshToken.builder()
+                .memberName(requestDto.getMemberName())
+                .refreshKey(refreshToken)
+                .build();
+        refreshTokenRepository.save(savedRefreshToken);
 
         return MemberLoginResponseDto.builder()
                 .memberName(requestDto.getMemberName())
