@@ -3,7 +3,7 @@
 -----------------------------------------
 
 ## - 회원가입
-### Request
+- ### Request
 ```HTTP
 POST /api/auth/signup
 Content-Type: application/json
@@ -14,15 +14,16 @@ Content-Type: application/json
   "password": "tester"
 }
 ```
-### Response
+- ### Response
 ```json
 {
   "memberId": "3"
 }
 ```
 
+
 ## - 로그인
-### Request
+- ### Request
 ```HTTP
 POST /api/auth/login
 Content-Type: application/json
@@ -33,7 +34,7 @@ Content-Type: application/json
   "password": "tester"
 }
 ```
-### Response
+- ### Response
 ```json
 {
   "memberName": "tester",
@@ -42,13 +43,14 @@ Content-Type: application/json
 }
 ```
 
+
 ## - 일반 API 호출
-### request
+- ### Request
 ```HTTP
 GET /member/info
 Authorization: Bearer ...Token...
 ```
-### response
+- ### Response
 ```json
 {
   "memberId": 3,
@@ -59,12 +61,12 @@ Authorization: Bearer ...Token...
 
 ## - ADMIN 권한의 API 호출
 - 권한이 없는 사용자에 대해서는 403 Forbidden Error
-### request
+- ### Request
 ```HTTP
 GET /member/info/{member_name}
 Authorization: Bearer ...Token...
 ```
-### response
+- ### Response
 ```json
 {
   "memberId": 1,
@@ -72,8 +74,9 @@ Authorization: Bearer ...Token...
 }
 ```
 
+
 ## - 토큰 재발급
-### request
+- ### Request
 ```HTTP
 POST /api/auth/reissue 
 Content-Type: application/json
@@ -84,8 +87,7 @@ Content-Type: application/json
   "refreshToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0ZXIiLCJhdXRoIjoiUk9MRV9NRU1CRVIiLCJpYXQiOjE2ODk2NzUyOTcsImV4cCI6MTY5MDI4MDA5N30.NeJPocgBIPVIdT6NC30ALrKVQiork_D-2KawExrF6-yX-l7hue8dyhyKu5306FaGRc5Osrj9Hq8YitDBm66NGw"
 }
 ```
-
-### response
+- ### Response
 ```json
 {
   "memberName": "tester",
