@@ -2,6 +2,7 @@
 
 -----------------------------------------
 
+
 ## 회원가입
 ### Request
 ```HTTP
@@ -64,13 +65,13 @@ Authorization: Bearer ...Token...
 ### Request
 ```HTTP
 GET /member/info/{member_name}
-Authorization: Bearer ...Token...
+Authorization: Bearer ...Access_Token...
 ```
 ### Response
 ```json
 {
   "memberId": 1,
-  "memberName": "admin"
+  "memberName": "{member_name}"
 }
 ```
 
@@ -83,15 +84,15 @@ Content-Type: application/json
 ```
 ```json
 {
-  "accessToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0ZXIiLCJhdXRoIjoiUk9MRV9NRU1CRVIiLCJpYXQiOjE2ODk2NzUyOTcsImV4cCI6MTY4OTY3NzA5N30.t17cJ3nd6VdTedOO-m74ZdHS_ylMjYs25vdUf3nWKOVVwC99IElOP8HGHrsmLw55_vnHyYeF-ivYxYIs5nS42w",
-  "refreshToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0ZXIiLCJhdXRoIjoiUk9MRV9NRU1CRVIiLCJpYXQiOjE2ODk2NzUyOTcsImV4cCI6MTY5MDI4MDA5N30.NeJPocgBIPVIdT6NC30ALrKVQiork_D-2KawExrF6-yX-l7hue8dyhyKu5306FaGRc5Osrj9Hq8YitDBm66NGw"
+  "accessToken": "...Expired_Access_Token...",
+  "refreshToken": "...Refresh_Token..."
 }
 ```
 ### Response
 ```json
 {
   "memberName": "tester",
-  "accessToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0ZXIiLCJhdXRoIjoiUk9MRV9NRU1CRVIiLCJpYXQiOjE2ODk2NzUzMDgsImV4cCI6MTY4OTY3NzEwOH0.WrhaOBT2hj1l9LeoOZCFbyFH8AQsnZYQz-U-XyaoQRhDsCk1p5ulcmFpZo9NHfbk2f4y7fd-OkP5Ry6xEYr_kA",
-  "refreshToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0ZXIiLCJhdXRoIjoiUk9MRV9NRU1CRVIiLCJpYXQiOjE2ODk2NzUzMDgsImV4cCI6MTY5MDI4MDEwOH0.SqnNy2T10MQpZZzoMc31TsNlb-g0BEvngCIat4w6o4uG_nLUTaiZSXSmf6XaeT15YZrz7oKgZDMVWTEVFlBM8g"
+  "accessToken": "...Reissued_Access_Token...",
+  "refreshToken": "...Reissued_Refresh_Token..."
 }
 ```
