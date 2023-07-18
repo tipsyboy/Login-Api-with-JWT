@@ -15,14 +15,14 @@
 - Content-Type: application/json
   - request
   ```json
-   {
-     "memberName": "tester",
-     "password": "tester"
-   }
+  {
+      "memberName": "tester",
+      "password": "tester"
+  }
   ```
   - response
   ```json
   {
-     "memberId": 3
+      "memberId": 3
   }
   ```
