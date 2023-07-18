@@ -15,6 +15,7 @@ import study.tipsyboy.loginApiJwt.domain.RoleType;
 import study.tipsyboy.loginApiJwt.dto.auth.MemberLoginRequestDto;
 import study.tipsyboy.loginApiJwt.dto.auth.MemberLoginResponseDto;
 import study.tipsyboy.loginApiJwt.dto.auth.MemberSignupRequestDto;
+import study.tipsyboy.loginApiJwt.dto.auth.TokenReissueRequestDto;
 import study.tipsyboy.loginApiJwt.jwt.util.TokenProvider;
 import study.tipsyboy.loginApiJwt.repository.MemberRepository;
 import study.tipsyboy.loginApiJwt.repository.RefreshTokenRepository;
@@ -73,4 +74,29 @@ public class AuthService {
                 .build();
     }
 
+    @Transactional
+    public MemberLoginResponseDto reissueToken(TokenReissueRequestDto requestDto) {
+
+        if (!tokenProvider.validateToken(requestDto.getRefreshToken())) {
+            throw new RuntimeException("유효하지 않은 Refresh Token 입니다.");
+        }
+
+        Authentication authenticationByToken = tokenProvider.getAuthenticationByToken(requestDto.getAccessToken());
+        RefreshToken refreshToken = refreshTokenRepository.findByMemberName(authenticationByToken.getName())
+                .orElseThrow(() -> new IllegalArgumentException("로그아웃된 사용자입니다. memberName=" + authenticationByToken.getName()));
+
+        if (!refreshToken.getRefreshKey().equals(requestDto.getRefreshToken())) {
+            throw new RuntimeException("Token 정보가 일치하지 않습니다.");
+        }
+
+        String accessToken = tokenProvider.createAccessToken(authenticationByToken);
+        String reissuedRefreshToken = tokenProvider.createRefreshToken(authenticationByToken);
+        refreshTokenRepository.save(refreshToken.updateToken(reissuedRefreshToken));
+
+        return MemberLoginResponseDto.builder()
+                .memberName(authenticationByToken.getName())
+                .accessToken(accessToken)
+                .refreshToken(reissuedRefreshToken)
+                .build();
+    }
 }
