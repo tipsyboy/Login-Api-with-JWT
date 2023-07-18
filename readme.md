@@ -11,18 +11,21 @@
   - H2 Database
 
 # API 호출 테스트 
-- POST /api/auth/signup
-- Content-Type: application/json
-  - request
-  ```json
-  {
-      "memberName": "tester",
-      "password": "tester"
-  }
-  ```
-  - response
-  ```json
-  {
-      "memberId": 3
-  }
-  ```
+#### signup
+- request
+  - POST /api/auth/signup
+  - Content-Type: application/json
+```json
+{
+  "memberName": "tester", 
+  "password": "tester"
+}
+```
+- response
+```json
+{
+  "memberId": 3
+}
+```
+
+  
