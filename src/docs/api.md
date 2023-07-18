@@ -2,7 +2,7 @@
 
 -----------------------------------------
 
-## 회원가입
+## - 회원가입
 ### Request
 ```HTTP
 POST /api/auth/signup
@@ -21,7 +21,7 @@ Content-Type: application/json
 }
 ```
 
-## 로그인
+## - 로그인
 ### Request
 ```HTTP
 POST /api/auth/login
@@ -42,7 +42,7 @@ Content-Type: application/json
 }
 ```
 
-## 일반 API 호출
+## - 일반 API 호출
 ### request
 ```HTTP
 GET /member/info
@@ -57,7 +57,7 @@ Authorization: Bearer ...Token...
 ```
 
 
-## ADMIN 권한의 API 호출
+## - ADMIN 권한의 API 호출
 - 권한이 없는 사용자에 대해서는 403 Forbidden Error
 ### request
 ```HTTP
@@ -72,7 +72,7 @@ Authorization: Bearer ...Token...
 }
 ```
 
-## 토큰 재발급
+## - 토큰 재발급
 ### request
 ```HTTP
 POST /api/auth/reissue 
