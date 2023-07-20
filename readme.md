@@ -4,7 +4,26 @@
 
 ## 프로젝트 시작 이유
 아무 생각 없이 막연하게 사용하던 기존 Spring Security 인증의 동작 원리를 
-JWT 개념과 함께 풀어 보기 위한 프로젝트입니다.
+JWT 개념과 함께 풀어 보기 위해 시작했습니다.
+
+
+## 개발환경
+- Gradle
+- Java 11
+- Spring Boot 2.7.13
+- Jar
+- Dependency
+    - Spring Web
+    - Spring Security
+    - Spring Data JPA
+    - Lombok
+    - H2 Database
+- Test
+    - Postman
+
+
+## API 호출 테스트
+[API 호출 테스트](https://github.com/tipsyboy/Login-Api-with-JWT/blob/master/src/docs/api.md)
 
 
 ## 프로젝트 시나리오
@@ -38,28 +57,10 @@ JWT 개념과 함께 풀어 보기 위한 프로젝트입니다.
 3) JwtFilter에서는 요청에 포함된 토큰이 유효한지를 판단해서 유효한 토큰임이 확인되면
    토큰을 통해서 Authentication 객체를 만들고 SecurityContextHolder에 Authentication 객체를 저장함으로 인증이 완료된다.
 
-- 위 과정은 스프링 시큐리티 인증의 일련의 과정이고 
+- **위 과정은 스프링 시큐리티 인증의 일련의 과정이고 
 JWT를 사용한다고 해서 특별하게 과정이 변경되는 것은 아니다.
 JWT를 사용할 경우엔 
 인증 완료후 토큰을 발행하고 
-이후 과정에서 AuthenticationFilter에서 JWT에 대한 처리를 하는 과정이 포함된다. 
+이후 과정에서 AuthenticationFilter에서 JWT에 대한 처리를 하는 과정이 포함된다.** 
 
-
-## 개발환경
-- Gradle
-- Java 11
-- Spring Boot 2.7.13
-- Jar
-- Dependency
-  - Spring Web
-  - Spring Security
-  - Spring Data JPA
-  - Lombok
-  - H2 Database
-- Test
-  - Postman 
-
-
-## API 호출 테스트
-[API 호출 테스트](https://github.com/tipsyboy/Login-Api-with-JWT/blob/master/src/docs/api.md)
 
