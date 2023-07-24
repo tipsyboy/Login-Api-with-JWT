@@ -26,7 +26,10 @@ public class SecurityConfig {
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
         return (web) -> web.ignoring()
-                .antMatchers("/h2-console/**", "/favicon.ico");
+                .antMatchers(
+                        "/h2-console/**",
+                        "/favicon.ico",
+                        "/js/**");
     }
 
     @Bean
@@ -56,7 +59,7 @@ public class SecurityConfig {
 
                 .and()
                 .authorizeRequests()
-                .mvcMatchers("/api/auth/**").permitAll()
+                .mvcMatchers("/api/auth/**", "/auth/**").permitAll()
                 .anyRequest().authenticated();
 //                .mvcMatchers("/**").hasAnyRole("MEMBER", "ADMIN");
 
