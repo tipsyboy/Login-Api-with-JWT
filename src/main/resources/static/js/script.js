@@ -32,7 +32,7 @@ $("#loginForm").submit(function (event) {
     };
 
     // 서버에 로그인 요청 보내기
-    sendAjaxRequest("POST", "/api/auth/login", data, handleLoginSuccess, handleLoginError);
+    sendAjaxRequest("POST", "/api/auth/login", data, handleLoginSuccess, handleSimpleError);
 });
 
 // Ajax 요청 보내는 함수

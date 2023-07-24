@@ -59,7 +59,7 @@ public class SecurityConfig {
 
                 .and()
                 .authorizeRequests()
-                .mvcMatchers("/api/auth/**", "/auth/**").permitAll()
+                .mvcMatchers("/api/auth/**", "/auth/**", "/home", "/member/**").permitAll()
                 .anyRequest().authenticated();
 //                .mvcMatchers("/**").hasAnyRole("MEMBER", "ADMIN");
 
