@@ -48,7 +48,7 @@ Content-Type: application/json
 ## 일반 API 호출
 ### Request
 ```HTTP
-GET /member/info
+GET /api/member/info
 Authorization: Bearer ...Token...
 ```
 ### Response
@@ -64,7 +64,7 @@ Authorization: Bearer ...Token...
 - 권한이 없는 사용자에 대해서는 403 Forbidden Error
 ### Request
 ```HTTP
-GET /member/info/{member_name}
+GET /api/member/info/{member_name}
 Authorization: Bearer ...Access_Token...
 ```
 ### Response
