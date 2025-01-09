@@ -2,12 +2,11 @@
 
 -----------------------------------------
 
-## 프로젝트 시작 이유
-아무 생각 없이 막연하게 사용하던 기존 Spring Security 인증의 동작 원리를 
-JWT 개념과 함께 풀어 보기 위해 시작했습니다.
+## 🚀 프로젝트 목적 
+막연하게 사용하던 기존 Spring Security 인증의 동작 원리를 JWT 개념과 함께 풀어 보기 위해 시작.
 
 
-## 개발환경
+## 🛠️ 개발환경
 - Gradle
 - Java 11
 - Spring Boot 2.7.13
@@ -22,11 +21,11 @@ JWT 개념과 함께 풀어 보기 위해 시작했습니다.
     - Postman
 
 
-## API 호출 테스트
+## 🧑‍💻 API 호출 테스트
 [API 호출 테스트](https://github.com/tipsyboy/Login-Api-with-JWT/blob/master/src/docs/api.md)
 
 
-## 프로젝트 시나리오
+## 📖 프로젝트 시나리오
 ![projectProcess](https://github.com/tipsyboy/Login-Api-with-JWT/assets/42955111/0ac96ed6-a00d-42f9-a280-f9900a2d9cf4)
 1. 최초 인증 과정 - Login
    1) 사용자 정보를 담은 요청으로 로그인 시도
@@ -39,7 +38,7 @@ JWT 개념과 함께 풀어 보기 위해 시작했습니다.
    2) 받은 토큰을 검증하고 새로운 AccessToken과 RefreshToken을 응답한다.
 
 
-## Spring Security 동작 원리와 JWT
+## 🔍 Spring Security 동작 원리와 JWT
 ![springSecurity 동작원리](https://github.com/tipsyboy/Login-Api-with-JWT/assets/42955111/9f253617-4d25-4555-ac95-b3a1174661ed)
 - Request에 Jwt가 포함되지 않은 경우
 1) 사용자로부터 로그인 정보를 입력받아서 HttpRequest를 보낸다.
